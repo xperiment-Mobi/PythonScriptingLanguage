@@ -29,15 +29,10 @@ public class Main {
 	}
 
 	public static void main(String[] args) throws Exception {
-		// WallyLexer lexer = new WallyLexer(new
-		// ANTLRStringStream("tail.set_next(n)"));
-		// WallyParser parser = new WallyParser(new CommonTokenStream(lexer));
-		// CommonTree tree = (CommonTree)parser.lookup().getTree();
 
 		PythonJLexer lexer = new PythonJLexer(new ANTLRStringStream(
 				contentsOf("in.txt")));
-		// WallyLexer lexer = new WallyLexer(new
-		// ANTLRStringStream(contentsOf("src/scripts/Main.wy")));
+
 		PythonJParser parser = new PythonJParser(new CommonTokenStream(lexer));
 		CommonTree tree = (CommonTree) parser.prog().getTree();
 
