@@ -11,9 +11,13 @@ tokens
 }
 
 @lexer::header {
-   
+  package pythonj;
   import java.util.Queue;
   import java.util.LinkedList;
+}
+
+@parser::header {
+  package pythonj;
 }
 
 @lexer::members 
@@ -52,7 +56,7 @@ STRING
 
 prog  : EOL* block;
 
-block : stat* -> ^(STATEMENTS stat+)
+block : stat*
   ;
   
 stat  : expr EOL
@@ -67,14 +71,17 @@ for_stmt  : 'for' item=ID 'in' items=expr ':' EOL INDENT actions=block DEDENT EO
 -> ^('for' ID expr block)
   ;
 
-if_stmt : 'if'^ expr ':' EOL INDENT block DEDENT EOL* ('elif' expr ':'EOL INDENT block DEDENT EOL*)* ('else' ':' EOL INDENT block DEDENT EOL*)?
+if_stmt : 'if' expr ':' EOL INDENT block DEDENT EOL* ('elif' expr ':'EOL INDENT block DEDENT EOL*)* ('else' ':' EOL INDENT block DEDENT EOL*)?
   ;
 
 while_stmt: 'while' '(' condition=expr ')' ':' EOL INDENT actions=block DEDENT EOL* -> ^('while' expr block);
 
 
 expr : orExpr
+    | printExpr
   ;
+
+printExpr : 'print' expr;
 
 orExpr
  : andExpr ('or' ^ andExpr)*

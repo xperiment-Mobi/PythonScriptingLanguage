@@ -1,9 +1,16 @@
-x = 4
-y = 10
-z = 2*3
-for z in list:
-	z  =z+1
-	if 2 < 4:
-		z = 50
-
-x = 1000
+x = 20
+while(x<30):
+	print x
+	x = x + 1
+	
+age = 222
+print "Age is "
+print age
+if age < 10:
+	print "Age is less than 10"
+elif age < 20:
+	print "Age is less than 20"
+elif age < 30:
+	print "Age is less than 30"
+else:
+	print "Age is greater than 30"
