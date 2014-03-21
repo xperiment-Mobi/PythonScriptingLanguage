@@ -11,6 +11,6 @@ if age < 10:
 elif age < 20:
 	print "Age is less than 20"
 elif age < 30:
-	print "Age is less than 30"
+	print "Age is less ""than"" 30"
 else:
-	print "Age is greater than 30"
+	print "Age is greater ""than"" \n 30"

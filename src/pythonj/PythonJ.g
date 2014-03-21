@@ -49,9 +49,12 @@ NUMBER: INT? '.' '0'..'9'+;
 
 
 STRING  
-  :  '"'  (~('"' | '\\')  | '\\' .)* '"'   
-  |  '\'' (~('\'' | '\\') | '\\' .)* '\''   
-  ;  
+ : '"' ('""' | ~('\r' | '\n' | '"'))* '"'
+   {
+     String s = getText().replace("\\n", "\n").replace("\\r", "\r").replace("\\t", "\t");
+     setText(s.substring(1, s.length()-1).replace("\"\"", "\""));
+   }
+ ;
 
 
 prog  : EOL* block;

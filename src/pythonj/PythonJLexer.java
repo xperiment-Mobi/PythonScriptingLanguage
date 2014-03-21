@@ -1,4 +1,4 @@
-// $ANTLR 3.5 C:\\Users\\Jangedoo\\Documents\\GitHub\\PythonScriptingLanguage\\src\\pythonj\\PythonJ.g 2014-03-20 21:25:30
+// $ANTLR 3.5 C:\\Users\\Jangedoo\\Documents\\GitHub\\PythonScriptingLanguage\\src\\pythonj\\PythonJ.g 2014-03-21 18:24:37
 
   package pythonj;
   import java.util.Queue;
@@ -797,117 +797,60 @@ public class PythonJLexer extends Lexer {
 		try {
 			int _type = STRING;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\Jangedoo\\Documents\\GitHub\\PythonScriptingLanguage\\src\\pythonj\\PythonJ.g:52:3: ( '\"' (~ ( '\"' | '\\\\' ) | '\\\\' . )* '\"' | '\\'' (~ ( '\\'' | '\\\\' ) | '\\\\' . )* '\\'' )
-			int alt8=2;
-			int LA8_0 = input.LA(1);
-			if ( (LA8_0=='\"') ) {
-				alt8=1;
-			}
-			else if ( (LA8_0=='\'') ) {
-				alt8=2;
-			}
-
-			else {
-				NoViableAltException nvae =
-					new NoViableAltException("", 8, 0, input);
-				throw nvae;
-			}
-
-			switch (alt8) {
-				case 1 :
-					// C:\\Users\\Jangedoo\\Documents\\GitHub\\PythonScriptingLanguage\\src\\pythonj\\PythonJ.g:52:6: '\"' (~ ( '\"' | '\\\\' ) | '\\\\' . )* '\"'
-					{
-					match('\"'); 
-					// C:\\Users\\Jangedoo\\Documents\\GitHub\\PythonScriptingLanguage\\src\\pythonj\\PythonJ.g:52:11: (~ ( '\"' | '\\\\' ) | '\\\\' . )*
-					loop6:
-					while (true) {
-						int alt6=3;
-						int LA6_0 = input.LA(1);
-						if ( ((LA6_0 >= '\u0000' && LA6_0 <= '!')||(LA6_0 >= '#' && LA6_0 <= '[')||(LA6_0 >= ']' && LA6_0 <= '\uFFFF')) ) {
-							alt6=1;
-						}
-						else if ( (LA6_0=='\\') ) {
-							alt6=2;
-						}
-
-						switch (alt6) {
-						case 1 :
-							// C:\\Users\\Jangedoo\\Documents\\GitHub\\PythonScriptingLanguage\\src\\pythonj\\PythonJ.g:52:12: ~ ( '\"' | '\\\\' )
-							{
-							if ( (input.LA(1) >= '\u0000' && input.LA(1) <= '!')||(input.LA(1) >= '#' && input.LA(1) <= '[')||(input.LA(1) >= ']' && input.LA(1) <= '\uFFFF') ) {
-								input.consume();
-							}
-							else {
-								MismatchedSetException mse = new MismatchedSetException(null,input);
-								recover(mse);
-								throw mse;
-							}
-							}
-							break;
-						case 2 :
-							// C:\\Users\\Jangedoo\\Documents\\GitHub\\PythonScriptingLanguage\\src\\pythonj\\PythonJ.g:52:29: '\\\\' .
-							{
-							match('\\'); 
-							matchAny(); 
-							}
-							break;
-
-						default :
-							break loop6;
-						}
+			// C:\\Users\\Jangedoo\\Documents\\GitHub\\PythonScriptingLanguage\\src\\pythonj\\PythonJ.g:52:2: ( '\"' ( '\"\"' |~ ( '\\r' | '\\n' | '\"' ) )* '\"' )
+			// C:\\Users\\Jangedoo\\Documents\\GitHub\\PythonScriptingLanguage\\src\\pythonj\\PythonJ.g:52:4: '\"' ( '\"\"' |~ ( '\\r' | '\\n' | '\"' ) )* '\"'
+			{
+			match('\"'); 
+			// C:\\Users\\Jangedoo\\Documents\\GitHub\\PythonScriptingLanguage\\src\\pythonj\\PythonJ.g:52:8: ( '\"\"' |~ ( '\\r' | '\\n' | '\"' ) )*
+			loop6:
+			while (true) {
+				int alt6=3;
+				int LA6_0 = input.LA(1);
+				if ( (LA6_0=='\"') ) {
+					int LA6_1 = input.LA(2);
+					if ( (LA6_1=='\"') ) {
+						alt6=1;
 					}
 
-					match('\"'); 
+				}
+				else if ( ((LA6_0 >= '\u0000' && LA6_0 <= '\t')||(LA6_0 >= '\u000B' && LA6_0 <= '\f')||(LA6_0 >= '\u000E' && LA6_0 <= '!')||(LA6_0 >= '#' && LA6_0 <= '\uFFFF')) ) {
+					alt6=2;
+				}
+
+				switch (alt6) {
+				case 1 :
+					// C:\\Users\\Jangedoo\\Documents\\GitHub\\PythonScriptingLanguage\\src\\pythonj\\PythonJ.g:52:9: '\"\"'
+					{
+					match("\"\""); 
+
 					}
 					break;
 				case 2 :
-					// C:\\Users\\Jangedoo\\Documents\\GitHub\\PythonScriptingLanguage\\src\\pythonj\\PythonJ.g:53:6: '\\'' (~ ( '\\'' | '\\\\' ) | '\\\\' . )* '\\''
+					// C:\\Users\\Jangedoo\\Documents\\GitHub\\PythonScriptingLanguage\\src\\pythonj\\PythonJ.g:52:16: ~ ( '\\r' | '\\n' | '\"' )
 					{
-					match('\''); 
-					// C:\\Users\\Jangedoo\\Documents\\GitHub\\PythonScriptingLanguage\\src\\pythonj\\PythonJ.g:53:11: (~ ( '\\'' | '\\\\' ) | '\\\\' . )*
-					loop7:
-					while (true) {
-						int alt7=3;
-						int LA7_0 = input.LA(1);
-						if ( ((LA7_0 >= '\u0000' && LA7_0 <= '&')||(LA7_0 >= '(' && LA7_0 <= '[')||(LA7_0 >= ']' && LA7_0 <= '\uFFFF')) ) {
-							alt7=1;
-						}
-						else if ( (LA7_0=='\\') ) {
-							alt7=2;
-						}
-
-						switch (alt7) {
-						case 1 :
-							// C:\\Users\\Jangedoo\\Documents\\GitHub\\PythonScriptingLanguage\\src\\pythonj\\PythonJ.g:53:12: ~ ( '\\'' | '\\\\' )
-							{
-							if ( (input.LA(1) >= '\u0000' && input.LA(1) <= '&')||(input.LA(1) >= '(' && input.LA(1) <= '[')||(input.LA(1) >= ']' && input.LA(1) <= '\uFFFF') ) {
-								input.consume();
-							}
-							else {
-								MismatchedSetException mse = new MismatchedSetException(null,input);
-								recover(mse);
-								throw mse;
-							}
-							}
-							break;
-						case 2 :
-							// C:\\Users\\Jangedoo\\Documents\\GitHub\\PythonScriptingLanguage\\src\\pythonj\\PythonJ.g:53:29: '\\\\' .
-							{
-							match('\\'); 
-							matchAny(); 
-							}
-							break;
-
-						default :
-							break loop7;
-						}
+					if ( (input.LA(1) >= '\u0000' && input.LA(1) <= '\t')||(input.LA(1) >= '\u000B' && input.LA(1) <= '\f')||(input.LA(1) >= '\u000E' && input.LA(1) <= '!')||(input.LA(1) >= '#' && input.LA(1) <= '\uFFFF') ) {
+						input.consume();
 					}
-
-					match('\''); 
+					else {
+						MismatchedSetException mse = new MismatchedSetException(null,input);
+						recover(mse);
+						throw mse;
+					}
 					}
 					break;
 
+				default :
+					break loop6;
+				}
 			}
+
+			match('\"'); 
+
+			     String s = getText().replace("\\n", "\n").replace("\\r", "\r").replace("\\t", "\t");
+			     setText(s.substring(1, s.length()-1).replace("\"\"", "\""));
+			   
+			}
+
 			state.type = _type;
 			state.channel = _channel;
 		}
@@ -922,25 +865,25 @@ public class PythonJLexer extends Lexer {
 		try {
 			int _type = Skip;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\Jangedoo\\Documents\\GitHub\\PythonScriptingLanguage\\src\\pythonj\\PythonJ.g:115:2: ( Spaces | Comment )
-			int alt9=2;
-			int LA9_0 = input.LA(1);
-			if ( (LA9_0=='\t'||LA9_0==' ') ) {
-				alt9=1;
+			// C:\\Users\\Jangedoo\\Documents\\GitHub\\PythonScriptingLanguage\\src\\pythonj\\PythonJ.g:118:2: ( Spaces | Comment )
+			int alt7=2;
+			int LA7_0 = input.LA(1);
+			if ( (LA7_0=='\t'||LA7_0==' ') ) {
+				alt7=1;
 			}
-			else if ( (LA9_0=='#') ) {
-				alt9=2;
+			else if ( (LA7_0=='#') ) {
+				alt7=2;
 			}
 
 			else {
 				NoViableAltException nvae =
-					new NoViableAltException("", 9, 0, input);
+					new NoViableAltException("", 7, 0, input);
 				throw nvae;
 			}
 
-			switch (alt9) {
+			switch (alt7) {
 				case 1 :
-					// C:\\Users\\Jangedoo\\Documents\\GitHub\\PythonScriptingLanguage\\src\\pythonj\\PythonJ.g:115:4: Spaces
+					// C:\\Users\\Jangedoo\\Documents\\GitHub\\PythonScriptingLanguage\\src\\pythonj\\PythonJ.g:118:4: Spaces
 					{
 					mSpaces(); 
 
@@ -948,7 +891,7 @@ public class PythonJLexer extends Lexer {
 					}
 					break;
 				case 2 :
-					// C:\\Users\\Jangedoo\\Documents\\GitHub\\PythonScriptingLanguage\\src\\pythonj\\PythonJ.g:116:4: Comment
+					// C:\\Users\\Jangedoo\\Documents\\GitHub\\PythonScriptingLanguage\\src\\pythonj\\PythonJ.g:119:4: Comment
 					{
 					mComment(); 
 
@@ -973,46 +916,46 @@ public class PythonJLexer extends Lexer {
 			int _channel = DEFAULT_TOKEN_CHANNEL;
 			CommonToken Spaces1=null;
 
-			// C:\\Users\\Jangedoo\\Documents\\GitHub\\PythonScriptingLanguage\\src\\pythonj\\PythonJ.g:121:2: ( ( ( '\\r' )? '\\n' | '\\r' ) ( Spaces )? )
-			// C:\\Users\\Jangedoo\\Documents\\GitHub\\PythonScriptingLanguage\\src\\pythonj\\PythonJ.g:121:4: ( ( '\\r' )? '\\n' | '\\r' ) ( Spaces )?
+			// C:\\Users\\Jangedoo\\Documents\\GitHub\\PythonScriptingLanguage\\src\\pythonj\\PythonJ.g:124:2: ( ( ( '\\r' )? '\\n' | '\\r' ) ( Spaces )? )
+			// C:\\Users\\Jangedoo\\Documents\\GitHub\\PythonScriptingLanguage\\src\\pythonj\\PythonJ.g:124:4: ( ( '\\r' )? '\\n' | '\\r' ) ( Spaces )?
 			{
-			// C:\\Users\\Jangedoo\\Documents\\GitHub\\PythonScriptingLanguage\\src\\pythonj\\PythonJ.g:121:4: ( ( '\\r' )? '\\n' | '\\r' )
-			int alt11=2;
-			int LA11_0 = input.LA(1);
-			if ( (LA11_0=='\r') ) {
-				int LA11_1 = input.LA(2);
-				if ( (LA11_1=='\n') ) {
-					alt11=1;
+			// C:\\Users\\Jangedoo\\Documents\\GitHub\\PythonScriptingLanguage\\src\\pythonj\\PythonJ.g:124:4: ( ( '\\r' )? '\\n' | '\\r' )
+			int alt9=2;
+			int LA9_0 = input.LA(1);
+			if ( (LA9_0=='\r') ) {
+				int LA9_1 = input.LA(2);
+				if ( (LA9_1=='\n') ) {
+					alt9=1;
 				}
 
 				else {
-					alt11=2;
+					alt9=2;
 				}
 
 			}
-			else if ( (LA11_0=='\n') ) {
-				alt11=1;
+			else if ( (LA9_0=='\n') ) {
+				alt9=1;
 			}
 
 			else {
 				NoViableAltException nvae =
-					new NoViableAltException("", 11, 0, input);
+					new NoViableAltException("", 9, 0, input);
 				throw nvae;
 			}
 
-			switch (alt11) {
+			switch (alt9) {
 				case 1 :
-					// C:\\Users\\Jangedoo\\Documents\\GitHub\\PythonScriptingLanguage\\src\\pythonj\\PythonJ.g:121:5: ( '\\r' )? '\\n'
+					// C:\\Users\\Jangedoo\\Documents\\GitHub\\PythonScriptingLanguage\\src\\pythonj\\PythonJ.g:124:5: ( '\\r' )? '\\n'
 					{
-					// C:\\Users\\Jangedoo\\Documents\\GitHub\\PythonScriptingLanguage\\src\\pythonj\\PythonJ.g:121:5: ( '\\r' )?
-					int alt10=2;
-					int LA10_0 = input.LA(1);
-					if ( (LA10_0=='\r') ) {
-						alt10=1;
+					// C:\\Users\\Jangedoo\\Documents\\GitHub\\PythonScriptingLanguage\\src\\pythonj\\PythonJ.g:124:5: ( '\\r' )?
+					int alt8=2;
+					int LA8_0 = input.LA(1);
+					if ( (LA8_0=='\r') ) {
+						alt8=1;
 					}
-					switch (alt10) {
+					switch (alt8) {
 						case 1 :
-							// C:\\Users\\Jangedoo\\Documents\\GitHub\\PythonScriptingLanguage\\src\\pythonj\\PythonJ.g:121:5: '\\r'
+							// C:\\Users\\Jangedoo\\Documents\\GitHub\\PythonScriptingLanguage\\src\\pythonj\\PythonJ.g:124:5: '\\r'
 							{
 							match('\r'); 
 							}
@@ -1024,7 +967,7 @@ public class PythonJLexer extends Lexer {
 					}
 					break;
 				case 2 :
-					// C:\\Users\\Jangedoo\\Documents\\GitHub\\PythonScriptingLanguage\\src\\pythonj\\PythonJ.g:121:18: '\\r'
+					// C:\\Users\\Jangedoo\\Documents\\GitHub\\PythonScriptingLanguage\\src\\pythonj\\PythonJ.g:124:18: '\\r'
 					{
 					match('\r'); 
 					}
@@ -1032,23 +975,23 @@ public class PythonJLexer extends Lexer {
 
 			}
 
-			// C:\\Users\\Jangedoo\\Documents\\GitHub\\PythonScriptingLanguage\\src\\pythonj\\PythonJ.g:121:24: ( Spaces )?
-			int alt12=2;
-			int LA12_0 = input.LA(1);
-			if ( (LA12_0=='\t'||LA12_0==' ') ) {
-				alt12=1;
+			// C:\\Users\\Jangedoo\\Documents\\GitHub\\PythonScriptingLanguage\\src\\pythonj\\PythonJ.g:124:24: ( Spaces )?
+			int alt10=2;
+			int LA10_0 = input.LA(1);
+			if ( (LA10_0=='\t'||LA10_0==' ') ) {
+				alt10=1;
 			}
-			switch (alt12) {
+			switch (alt10) {
 				case 1 :
-					// C:\\Users\\Jangedoo\\Documents\\GitHub\\PythonScriptingLanguage\\src\\pythonj\\PythonJ.g:121:24: Spaces
+					// C:\\Users\\Jangedoo\\Documents\\GitHub\\PythonScriptingLanguage\\src\\pythonj\\PythonJ.g:124:24: Spaces
 					{
-					int Spaces1Start392 = getCharIndex();
-					int Spaces1StartLine392 = getLine();
-					int Spaces1StartCharPos392 = getCharPositionInLine();
+					int Spaces1Start361 = getCharIndex();
+					int Spaces1StartLine361 = getLine();
+					int Spaces1StartCharPos361 = getCharPositionInLine();
 					mSpaces(); 
-					Spaces1 = new CommonToken(input, Token.INVALID_TOKEN_TYPE, Token.DEFAULT_CHANNEL, Spaces1Start392, getCharIndex()-1);
-					Spaces1.setLine(Spaces1StartLine392);
-					Spaces1.setCharPositionInLine(Spaces1StartCharPos392);
+					Spaces1 = new CommonToken(input, Token.INVALID_TOKEN_TYPE, Token.DEFAULT_CHANNEL, Spaces1Start361, getCharIndex()-1);
+					Spaces1.setLine(Spaces1StartLine361);
+					Spaces1.setCharPositionInLine(Spaces1StartCharPos361);
 
 					}
 					break;
@@ -1099,20 +1042,20 @@ public class PythonJLexer extends Lexer {
 	// $ANTLR start "Spaces"
 	public final void mSpaces() throws RecognitionException {
 		try {
-			// C:\\Users\\Jangedoo\\Documents\\GitHub\\PythonScriptingLanguage\\src\\pythonj\\PythonJ.g:157:2: ( ( ' ' | '\\t' )+ )
-			// C:\\Users\\Jangedoo\\Documents\\GitHub\\PythonScriptingLanguage\\src\\pythonj\\PythonJ.g:157:4: ( ' ' | '\\t' )+
+			// C:\\Users\\Jangedoo\\Documents\\GitHub\\PythonScriptingLanguage\\src\\pythonj\\PythonJ.g:160:2: ( ( ' ' | '\\t' )+ )
+			// C:\\Users\\Jangedoo\\Documents\\GitHub\\PythonScriptingLanguage\\src\\pythonj\\PythonJ.g:160:4: ( ' ' | '\\t' )+
 			{
-			// C:\\Users\\Jangedoo\\Documents\\GitHub\\PythonScriptingLanguage\\src\\pythonj\\PythonJ.g:157:4: ( ' ' | '\\t' )+
-			int cnt13=0;
-			loop13:
+			// C:\\Users\\Jangedoo\\Documents\\GitHub\\PythonScriptingLanguage\\src\\pythonj\\PythonJ.g:160:4: ( ' ' | '\\t' )+
+			int cnt11=0;
+			loop11:
 			while (true) {
-				int alt13=2;
-				int LA13_0 = input.LA(1);
-				if ( (LA13_0=='\t'||LA13_0==' ') ) {
-					alt13=1;
+				int alt11=2;
+				int LA11_0 = input.LA(1);
+				if ( (LA11_0=='\t'||LA11_0==' ') ) {
+					alt11=1;
 				}
 
-				switch (alt13) {
+				switch (alt11) {
 				case 1 :
 					// C:\\Users\\Jangedoo\\Documents\\GitHub\\PythonScriptingLanguage\\src\\pythonj\\PythonJ.g:
 					{
@@ -1128,11 +1071,11 @@ public class PythonJLexer extends Lexer {
 					break;
 
 				default :
-					if ( cnt13 >= 1 ) break loop13;
-					EarlyExitException eee = new EarlyExitException(13, input);
+					if ( cnt11 >= 1 ) break loop11;
+					EarlyExitException eee = new EarlyExitException(11, input);
 					throw eee;
 				}
-				cnt13++;
+				cnt11++;
 			}
 
 			setText(getText().replace("\t", "    "));
@@ -1148,20 +1091,20 @@ public class PythonJLexer extends Lexer {
 	// $ANTLR start "Comment"
 	public final void mComment() throws RecognitionException {
 		try {
-			// C:\\Users\\Jangedoo\\Documents\\GitHub\\PythonScriptingLanguage\\src\\pythonj\\PythonJ.g:161:2: ( '#' (~ ( '\\r' | '\\n' ) )* )
-			// C:\\Users\\Jangedoo\\Documents\\GitHub\\PythonScriptingLanguage\\src\\pythonj\\PythonJ.g:161:4: '#' (~ ( '\\r' | '\\n' ) )*
+			// C:\\Users\\Jangedoo\\Documents\\GitHub\\PythonScriptingLanguage\\src\\pythonj\\PythonJ.g:164:2: ( '#' (~ ( '\\r' | '\\n' ) )* )
+			// C:\\Users\\Jangedoo\\Documents\\GitHub\\PythonScriptingLanguage\\src\\pythonj\\PythonJ.g:164:4: '#' (~ ( '\\r' | '\\n' ) )*
 			{
 			match('#'); 
-			// C:\\Users\\Jangedoo\\Documents\\GitHub\\PythonScriptingLanguage\\src\\pythonj\\PythonJ.g:161:8: (~ ( '\\r' | '\\n' ) )*
-			loop14:
+			// C:\\Users\\Jangedoo\\Documents\\GitHub\\PythonScriptingLanguage\\src\\pythonj\\PythonJ.g:164:8: (~ ( '\\r' | '\\n' ) )*
+			loop12:
 			while (true) {
-				int alt14=2;
-				int LA14_0 = input.LA(1);
-				if ( ((LA14_0 >= '\u0000' && LA14_0 <= '\t')||(LA14_0 >= '\u000B' && LA14_0 <= '\f')||(LA14_0 >= '\u000E' && LA14_0 <= '\uFFFF')) ) {
-					alt14=1;
+				int alt12=2;
+				int LA12_0 = input.LA(1);
+				if ( ((LA12_0 >= '\u0000' && LA12_0 <= '\t')||(LA12_0 >= '\u000B' && LA12_0 <= '\f')||(LA12_0 >= '\u000E' && LA12_0 <= '\uFFFF')) ) {
+					alt12=1;
 				}
 
-				switch (alt14) {
+				switch (alt12) {
 				case 1 :
 					// C:\\Users\\Jangedoo\\Documents\\GitHub\\PythonScriptingLanguage\\src\\pythonj\\PythonJ.g:
 					{
@@ -1177,7 +1120,7 @@ public class PythonJLexer extends Lexer {
 					break;
 
 				default :
-					break loop14;
+					break loop12;
 				}
 			}
 
@@ -1193,8 +1136,8 @@ public class PythonJLexer extends Lexer {
 	// $ANTLR start "DEDENT"
 	public final void mDEDENT() throws RecognitionException {
 		try {
-			// C:\\Users\\Jangedoo\\Documents\\GitHub\\PythonScriptingLanguage\\src\\pythonj\\PythonJ.g:164:17: ()
-			// C:\\Users\\Jangedoo\\Documents\\GitHub\\PythonScriptingLanguage\\src\\pythonj\\PythonJ.g:164:19: 
+			// C:\\Users\\Jangedoo\\Documents\\GitHub\\PythonScriptingLanguage\\src\\pythonj\\PythonJ.g:167:17: ()
+			// C:\\Users\\Jangedoo\\Documents\\GitHub\\PythonScriptingLanguage\\src\\pythonj\\PythonJ.g:167:19: 
 			{
 			}
 
@@ -1208,8 +1151,8 @@ public class PythonJLexer extends Lexer {
 	// $ANTLR start "INDENT"
 	public final void mINDENT() throws RecognitionException {
 		try {
-			// C:\\Users\\Jangedoo\\Documents\\GitHub\\PythonScriptingLanguage\\src\\pythonj\\PythonJ.g:165:17: ()
-			// C:\\Users\\Jangedoo\\Documents\\GitHub\\PythonScriptingLanguage\\src\\pythonj\\PythonJ.g:165:19: 
+			// C:\\Users\\Jangedoo\\Documents\\GitHub\\PythonScriptingLanguage\\src\\pythonj\\PythonJ.g:168:17: ()
+			// C:\\Users\\Jangedoo\\Documents\\GitHub\\PythonScriptingLanguage\\src\\pythonj\\PythonJ.g:168:19: 
 			{
 			}
 
@@ -1223,9 +1166,9 @@ public class PythonJLexer extends Lexer {
 	@Override
 	public void mTokens() throws RecognitionException {
 		// C:\\Users\\Jangedoo\\Documents\\GitHub\\PythonScriptingLanguage\\src\\pythonj\\PythonJ.g:1:8: ( T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | ID | INT | NUMBER | STRING | Skip | EOL )
-		int alt15=31;
-		alt15 = dfa15.predict(input);
-		switch (alt15) {
+		int alt13=31;
+		alt13 = dfa13.predict(input);
+		switch (alt13) {
 			case 1 :
 				// C:\\Users\\Jangedoo\\Documents\\GitHub\\PythonScriptingLanguage\\src\\pythonj\\PythonJ.g:1:10: T__16
 				{
@@ -1448,36 +1391,36 @@ public class PythonJLexer extends Lexer {
 	}
 
 
-	protected DFA15 dfa15 = new DFA15(this);
-	static final String DFA15_eotS =
+	protected DFA13 dfa13 = new DFA13(this);
+	static final String DFA13_eotS =
 		"\7\uffff\1\33\2\uffff\1\35\1\37\1\41\10\25\1\uffff\1\53\13\uffff\4\25"+
 		"\1\61\1\62\1\63\2\25\1\uffff\1\66\3\25\1\72\3\uffff\2\25\1\uffff\1\25"+
 		"\1\76\1\77\1\uffff\3\25\2\uffff\1\103\1\104\1\25\2\uffff\1\25\1\107\1"+
 		"\uffff";
-	static final String DFA15_eofS =
+	static final String DFA13_eofS =
 		"\110\uffff";
-	static final String DFA15_minS =
+	static final String DFA13_minS =
 		"\1\11\6\uffff\1\60\2\uffff\3\75\1\156\1\157\1\154\1\157\1\146\2\162\1"+
 		"\150\1\uffff\1\56\13\uffff\1\144\1\156\1\151\1\162\3\60\2\151\1\uffff"+
 		"\1\60\1\164\1\146\1\145\1\60\3\uffff\1\156\1\154\1\uffff\1\141\2\60\1"+
 		"\uffff\1\164\1\145\1\151\2\uffff\2\60\1\156\2\uffff\1\163\1\60\1\uffff";
-	static final String DFA15_maxS =
+	static final String DFA13_maxS =
 		"\1\172\6\uffff\1\71\2\uffff\3\75\1\156\1\157\1\154\1\157\1\156\2\162\1"+
 		"\150\1\uffff\1\71\13\uffff\1\144\1\156\1\163\1\162\3\172\2\151\1\uffff"+
 		"\1\172\1\164\1\146\1\145\1\172\3\uffff\1\156\1\154\1\uffff\1\141\2\172"+
 		"\1\uffff\1\164\1\145\1\151\2\uffff\2\172\1\156\2\uffff\1\163\1\172\1\uffff";
-	static final String DFA15_acceptS =
+	static final String DFA13_acceptS =
 		"\1\uffff\1\1\1\2\1\3\1\4\1\5\1\6\1\uffff\1\10\1\11\13\uffff\1\32\1\uffff"+
 		"\1\34\1\35\1\36\1\37\1\7\1\13\1\12\1\15\1\14\1\17\1\16\11\uffff\1\33\5"+
 		"\uffff\1\25\1\26\1\27\2\uffff\1\20\3\uffff\1\24\3\uffff\1\22\1\23\3\uffff"+
 		"\1\30\1\31\2\uffff\1\21";
-	static final String DFA15_specialS =
+	static final String DFA13_specialS =
 		"\110\uffff}>";
-	static final String[] DFA15_transitionS = {
-			"\1\31\1\32\2\uffff\1\32\22\uffff\1\31\1\1\1\30\1\31\1\uffff\1\2\1\uffff"+
-			"\1\30\1\3\1\4\1\5\1\6\1\uffff\1\7\1\27\1\10\12\26\1\11\1\uffff\1\12\1"+
-			"\13\1\14\2\uffff\32\25\4\uffff\1\25\1\uffff\1\15\1\25\1\16\1\25\1\17"+
-			"\1\20\2\25\1\21\5\25\1\22\1\23\6\25\1\24\3\25",
+	static final String[] DFA13_transitionS = {
+			"\1\31\1\32\2\uffff\1\32\22\uffff\1\31\1\1\1\30\1\31\1\uffff\1\2\2\uffff"+
+			"\1\3\1\4\1\5\1\6\1\uffff\1\7\1\27\1\10\12\26\1\11\1\uffff\1\12\1\13\1"+
+			"\14\2\uffff\32\25\4\uffff\1\25\1\uffff\1\15\1\25\1\16\1\25\1\17\1\20"+
+			"\2\25\1\21\5\25\1\22\1\23\6\25\1\24\3\25",
 			"",
 			"",
 			"",
@@ -1551,34 +1494,34 @@ public class PythonJLexer extends Lexer {
 			""
 	};
 
-	static final short[] DFA15_eot = DFA.unpackEncodedString(DFA15_eotS);
-	static final short[] DFA15_eof = DFA.unpackEncodedString(DFA15_eofS);
-	static final char[] DFA15_min = DFA.unpackEncodedStringToUnsignedChars(DFA15_minS);
-	static final char[] DFA15_max = DFA.unpackEncodedStringToUnsignedChars(DFA15_maxS);
-	static final short[] DFA15_accept = DFA.unpackEncodedString(DFA15_acceptS);
-	static final short[] DFA15_special = DFA.unpackEncodedString(DFA15_specialS);
-	static final short[][] DFA15_transition;
+	static final short[] DFA13_eot = DFA.unpackEncodedString(DFA13_eotS);
+	static final short[] DFA13_eof = DFA.unpackEncodedString(DFA13_eofS);
+	static final char[] DFA13_min = DFA.unpackEncodedStringToUnsignedChars(DFA13_minS);
+	static final char[] DFA13_max = DFA.unpackEncodedStringToUnsignedChars(DFA13_maxS);
+	static final short[] DFA13_accept = DFA.unpackEncodedString(DFA13_acceptS);
+	static final short[] DFA13_special = DFA.unpackEncodedString(DFA13_specialS);
+	static final short[][] DFA13_transition;
 
 	static {
-		int numStates = DFA15_transitionS.length;
-		DFA15_transition = new short[numStates][];
+		int numStates = DFA13_transitionS.length;
+		DFA13_transition = new short[numStates][];
 		for (int i=0; i<numStates; i++) {
-			DFA15_transition[i] = DFA.unpackEncodedString(DFA15_transitionS[i]);
+			DFA13_transition[i] = DFA.unpackEncodedString(DFA13_transitionS[i]);
 		}
 	}
 
-	protected class DFA15 extends DFA {
+	protected class DFA13 extends DFA {
 
-		public DFA15(BaseRecognizer recognizer) {
+		public DFA13(BaseRecognizer recognizer) {
 			this.recognizer = recognizer;
-			this.decisionNumber = 15;
-			this.eot = DFA15_eot;
-			this.eof = DFA15_eof;
-			this.min = DFA15_min;
-			this.max = DFA15_max;
-			this.accept = DFA15_accept;
-			this.special = DFA15_special;
-			this.transition = DFA15_transition;
+			this.decisionNumber = 13;
+			this.eot = DFA13_eot;
+			this.eof = DFA13_eof;
+			this.min = DFA13_min;
+			this.max = DFA13_max;
+			this.accept = DFA13_accept;
+			this.special = DFA13_special;
+			this.transition = DFA13_transition;
 		}
 		@Override
 		public String getDescription() {
