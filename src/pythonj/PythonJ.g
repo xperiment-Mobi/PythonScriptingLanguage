@@ -8,6 +8,7 @@ tokens
 {
   EXP;
   STATEMENTS;
+  LOOKUP;
 }
 
 @lexer::header {
@@ -82,7 +83,10 @@ while_stmt: 'while' '(' condition=expr ')' ':' EOL INDENT actions=block DEDENT E
 
 expr : orExpr
     | printExpr
+    
   ;
+  
+ 
 
 printExpr : 'print' expr;
 
@@ -111,7 +115,14 @@ atom  : INT
   | '(' expr ')' -> expr
   | NUMBER
   | STRING
+  | lookup
   ;
+
+lookup : ID tail -> ^(ID tail);
+
+tail : '.' ID params;
+
+params : '(' expr? (',' expr)* ')';
 
 
 Skip

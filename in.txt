@@ -1,16 +1,2 @@
-x = 20
-while(x<30):
-	print x
-	x = x + 1
-	
-age = 222
-print "Age is "
-print age
-if age < 10:
-	print "Age is less than 10"
-elif age < 20:
-	print "Age is less than 20"
-elif age < 30:
-	print "Age is less ""than"" 30"
-else:
-	print "Age is greater ""than"" \n 30"
+x = "Hello World"
+print x.charAt(22,2,3,5,4)

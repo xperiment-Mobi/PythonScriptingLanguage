@@ -95,9 +95,23 @@ expr returns [SLNode node]
  | NUMBER{node= new NumNode($NUMBER.getText());}
  | STRING {node = new StringNode($STRING.getText());}
  | 'print' stuff=expr { node = new PrintNode($stuff.node);}
+ | ^(ID tail) {node = new FunctionCallNode(new IdNode($ID.getText(), memory),$tail.node);}
  | makelist_expr { node = $makelist_expr.node;} 
  ;
  
+ tail returns [SLNode node]: '.' ID params
+ {
+  $node = new TailNode($ID.getText(), $params.node);
+ }
+ ;
+ params returns [List<SLNode> node]
+ @init
+ {
+  List<SLNode> parameters = new ArrayList<SLNode>();
+  $node = parameters;
+ }:
+ '(' p1=expr? {parameters.add($p1.node);} (',' p2=expr{parameters.add($p2.node);})* ')'
+ ;
  
  makelist_expr returns [SLNode node]
  @init{
