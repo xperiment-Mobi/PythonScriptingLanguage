@@ -5,12 +5,9 @@ import java.util.List;
 
 public class BlockNode implements SLNode {
 	private List<SLNode> statements;
-	private SLNode returnStatement; 
-
 	
 	public BlockNode() {  
 	    statements = new ArrayList<SLNode>();  
-	    returnStatement = null;  
 	  }  
 	
 	
@@ -21,12 +18,9 @@ public class BlockNode implements SLNode {
 	
 	@Override
 	public SLValue evaluate() throws Exception {
-		SLValue value = null;
 		for(SLNode stat : statements) {  
-		      value = stat.evaluate();		      
+		      stat.evaluate();		      
 		}
-		return value;
-		// return VOID or returnStatement.evaluate() if it's not null  
-	    //return returnStatement == null ? SLValue.VOID : returnStatement.evaluate(); 
+		return null;
 	}
 }
