@@ -12,13 +12,6 @@ tokens
   LOOKUP;
 }
 
-@lexer::header {
-  package pythonj;
-}
-
-@parser::header {
-  package pythonj;
-}
 
 @lexer::members 
 {
@@ -27,20 +20,18 @@ tokens
   private var openBrace:int = 0;
   
   //@Override
-  //public void emit(Token t) {
-  //  state.token = t;
-  //  tokens.offer(t);
-  //}
-  @Override
-  public function emit(Token t):void {
-    state.token = t;
-    tokens.push(t);
+//  public void emit(Token t) {
+//    state.token = t;
+//    tokens.offer(t);
+//  }
+ 
+  public function addToken(t:Token):void {
+  	state.token = t;
+  	tokens.push(t);
   }
-
-  @Override
-  public function nextToken():void {
+  override public function nextToken():Token {
     super.nextToken();
-    return tokens.length==0 ? getEOFToken() : tokens[0];
+    return tokens.length==0 ? TokenConstants.EOF_TOKEN : tokens[0];
   }
   
 }
@@ -56,8 +47,8 @@ NUMBER: INT? '.' '0'..'9'+;
 STRING  
  : '"' ('""' | ~('\r' | '\n' | '"'))* '"'
    {
-     String s = getText().replace("\\n", "\n").replace("\\r", "\r").replace("\\t", "\t");
-     setText(s.substring(1, s.length()-1).replace("\"\"", "\""));
+     var s:String = super.getText().replace("\\n", "\n").replace("\\r", "\r").replace("\\t", "\t");
+     super.setText(s.substring(1, s.length()-1).replace("\"\"", "\""));
    }
  ;
 
@@ -138,14 +129,14 @@ Skip
 EOL
  : ('\r'? '\n' | '\r') Spaces?
    {
-     var next:int= input.LA(1);
+     var next:String= String.fromCharCode(input.LA(1));
      
      if(openBrace > 0|| next == '\r' || next == '\n' || next == '#') {
        // if we're inside a list or on a blank line, ignore all indents, dedents and line breaks
        return;
      }
      else {
-       emit(new CommonToken(EOL, "EOL"));
+       addToken(new CommonToken(EOL, "EOL"));
 
        var indent:int= $Spaces == null ? 0: $Spaces.text.length();
        var previous:int= indents.length==0 ? 0: indents[0];
@@ -156,11 +147,11 @@ EOL
        }
        else if(indent > previous) {
          indents.push(indent);
-         emit(new CommonToken(INDENT, "INDENT"));
+         addToken(new CommonToken(INDENT, "INDENT"));
        }
        else {
          while(!indents.length==0 && indents[0] > indent) {
-           emit(new CommonToken(DEDENT, "DEDENT"));
+           addToken(new CommonToken(DEDENT, "DEDENT"));
            indents.pop();
          }
        }
@@ -171,7 +162,7 @@ EOL
 
 /* fragments */
 fragment Spaces
- : (' ' | '\t')+ {setText(getText().replace("\t", "    "));}
+ : (' ' | '\t')+ {super.setText(super.getText().replace("\t", "    "));}
  ;
 
 fragment Comment
