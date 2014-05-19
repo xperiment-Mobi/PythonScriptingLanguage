@@ -15,8 +15,8 @@ package com.xperiment.PythonScript.nodes
 		}
 		
 		public function evaluate():SLValue {
-			if(this.id!=null && memory.containsKey(id)){
-				return memory.get(id);
+			if(this.id!=null && memory[id]!=null){
+				return memory[id];
 			}
 			else
 				throw new Error("Undefined Variable");

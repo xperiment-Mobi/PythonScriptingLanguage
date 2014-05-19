@@ -10,6 +10,7 @@ package com.xperiment.PythonScript.nodes
 		}
 		
 		public function evaluate():SLValue {
+			trace("Evaluating String Node");
 			// TODO Auto-generated method stub
 			return output;
 		}

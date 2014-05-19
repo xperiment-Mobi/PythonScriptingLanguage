@@ -11,6 +11,7 @@ package com.xperiment.PythonScript.nodes
 		
 		public function ForNode(id:String, items:SLNode, body:SLNode,memory:Dictionary)
 		{
+			trace("Init For Node");
 			this.id = id;
 			this.items = items;
 			this.body = body;
@@ -19,14 +20,13 @@ package com.xperiment.PythonScript.nodes
 			
 		}
 	
-		public function evaluate():SLValue {
-			var items:Array = (this.items.evaluate() as SLValue).asList();
-			for(var i:int =0;i<items.length;i++)
+		public function evaluate():SLValue {			
+			var temp:Array = this.items.evaluate().asList();
+			for (var i:int = 0; i < temp.length; i++)
 			{
-				this.memory.put(this.id, i);
-				this.body.evaluate();
+				this.memory[id] = temp[i];
+				body.evaluate();
 			}
-			
 			return null;
 		}
 	

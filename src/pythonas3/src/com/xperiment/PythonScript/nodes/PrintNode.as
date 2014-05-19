@@ -7,6 +7,7 @@ package com.xperiment.PythonScript.nodes
 		
 		public function PrintNode(n:SLNode)
 		{
+			trace('Print node');
 			node= n;
 		}
 		

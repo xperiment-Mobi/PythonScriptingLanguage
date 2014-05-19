@@ -14,6 +14,7 @@ package com.xperiment.PythonScript.nodes
 		
 		
 		public function addStatement(stat:SLNode):void {  
+			trace("Adding statements");
 		    statements.push(stat);  
 		  } 
 		
@@ -24,8 +25,6 @@ package com.xperiment.PythonScript.nodes
 			      stat.evaluate();		      
 			}
 			return null;
-			// return VOID or returnStatement.evaluate() if it's not null  
-		    //return returnStatement == null ? SLValue.VOID : returnStatement.evaluate(); 
 		}
 	}
 }

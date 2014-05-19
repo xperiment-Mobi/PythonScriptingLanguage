@@ -5,6 +5,7 @@ import java.util.Scanner;
 import nodes.SLNode;
 import pythonj.TreeWalker;
 
+import org.antlr.runtime.ANTLRFileStream;
 import org.antlr.runtime.ANTLRStringStream;
 import org.antlr.runtime.CommonTokenStream;
 import org.antlr.runtime.tree.CommonTree;
@@ -30,8 +31,8 @@ public class Main {
 
 	public static void main(String[] args) throws Exception {
 
-		PythonJLexer lexer = new PythonJLexer(new ANTLRStringStream(
-				contentsOf("in.txt")));
+		//PythonJLexer lexer = new PythonJLexer(new ANTLRStringStream(contentsOf("in.txt")));
+		PythonJLexer lexer = new PythonJLexer(new ANTLRFileStream("in.txt"));
 
 		PythonJParser parser = new PythonJParser(new CommonTokenStream(lexer));
 		CommonTree tree = (CommonTree) parser.prog().getTree();

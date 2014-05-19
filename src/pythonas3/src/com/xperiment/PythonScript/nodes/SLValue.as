@@ -36,15 +36,13 @@ package com.xperiment.PythonScript.nodes
 			return Number(value);
 		}
 	
-		public function asList():Array {
-			if(value is Array)return Array(value);
-			if(value is String)return value.split("");
-			else throw new Error("cannot typecaste "+typeof(value)+" as a List");
-			return null;
-		}
 	
 		public function asString():String{
 			return String(value);
+		}
+		
+		public function asList():Array {
+				return Array(value);
 		}
 	
 		public function compareTo(that:SLValue):int {
