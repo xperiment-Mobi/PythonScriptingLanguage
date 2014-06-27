@@ -24,6 +24,9 @@ package
 	import org.antlr.runtime.tree.CommonTree;
 	import org.antlr.runtime.tree.CommonTreeNodeStream;
 	import com.xperiment.PythonScript.nodes.SLNode;
+	import test.ExpressionTest;
+	import test.TestBase;
+	import flash.utils.Dictionary ;
 	
 	public class PScript extends Sprite
 	{
@@ -58,19 +61,42 @@ package
 		
 		public function PScript():void
 		{
-			myLoader= new URLLoader(new URLRequest("code.txt"));
-			myLoader.addEventListener(Event.COMPLETE, loadComplete);
-			
+			//myLoader= new URLLoader(new URLRequest("code.txt"));
+			//myLoader.addEventListener(Event.COMPLETE, loadComplete);
 			if (stage)
 				init();
+				
 			else
 				addEventListener(Event.ADDED_TO_STAGE, init);
 		
 		}
 		
 		public static function init():void
-		{			
-		
+		{	
+			var testCases:Dictionary = new Dictionary();
+			testCases["24+4"] = "28";								//add test
+			testCases["600-200"] = "400";							//subtract test
+			testCases["11*4"] = "44";								//multiplication test
+			testCases["1200/6"] = "200";							//division test
+			testCases["5==4 ? \"true\" : \"false\" "] = "false";	//shorthand test
+			testCases["5>10"] = "false";							//relational op test
+			testCases["24< 200"] = "true";							//relational op test
+			testCases["234 >= 234"] = "true";						//relational op test
+			testCases["99 <= 98"] = "false";						//relational op test
+			testCases[" (5==5) && (100==100) "] = "true";			//and op test
+			testCases[" (5==5) && (100==22) "] = "false";			//and op test
+			testCases[" (5==5) || (100==100) "] = "true";			//or op test
+			testCases[" (5==5) || (100==22) "] = "true";			//or op test
+			
+			testCases["-5"] = "-5";
+			testCases["! (2==3)"] = "true";
+			testCases["2^5"] = "32";
+			
+			for(var key:Object in testCases)
+			{
+				var tester:ExpressionTest = new ExpressionTest(String(key), String(testCases[key]));
+				tester.Evaluate();
+			}
 		}
 	
 	}
